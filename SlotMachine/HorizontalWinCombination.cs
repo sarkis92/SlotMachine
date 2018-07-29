@@ -8,7 +8,7 @@ namespace SlotMachine
     {
         private const char _wildcard = '*';
 
-        public decimal CalculateWinAmount(ISlotElementsMatrix matrix, decimal bet)
+        public decimal CalculateWinAmount(IElementsMatrix matrix, decimal bet)
         {
             decimal winAmount = 0;
 
@@ -20,7 +20,7 @@ namespace SlotMachine
                 //Get first non wildcard element and its position
                 while (startColIdx < matrix.Columns)
                 {
-                    if (matrix.Slots[row, startColIdx].Mark != _wildcard)
+                    if (matrix.Slots[row, startColIdx].Symbol != _wildcard)
                     {
                         comparingElement = matrix.Slots[row, startColIdx];
                         break;
@@ -36,8 +36,8 @@ namespace SlotMachine
                 {
                     SlotElement current = matrix.Slots[row, col];
 
-                    if (comparingElement.Mark != current.Mark &&
-                        current.Mark != _wildcard)
+                    if (comparingElement.Symbol != current.Symbol &&
+                        current.Symbol != _wildcard)
                     {
                         winningLine = false;
                         break;

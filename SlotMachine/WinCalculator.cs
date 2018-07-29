@@ -5,14 +5,14 @@ namespace SlotMachine
 {
     public class WinCalculator : IWinCalculator
     {
-        private IList<IWinningCombination> winningCombinations;
+        private readonly IList<IWinningCombination> winningCombinations;
 
         public WinCalculator(IList<IWinningCombination> winningCombinations)
         {
             this.winningCombinations = winningCombinations;
         }
 
-        public decimal Calculate(ISlotElementsMatrix slotElementsMatrix, decimal bet)
+        public decimal Calculate(IElementsMatrix slotElementsMatrix, decimal bet)
         {
             decimal winAmount = 0;
 

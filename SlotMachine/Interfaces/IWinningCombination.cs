@@ -2,6 +2,6 @@
 {
     public interface IWinningCombination
     {
-        decimal CalculateWinAmount(ISlotElementsMatrix slotElementsMatrix, decimal bet);
+        decimal CalculateWinAmount(IElementsMatrix slotElementsMatrix, decimal bet);
     }
 }

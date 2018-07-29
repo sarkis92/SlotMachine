@@ -2,20 +2,20 @@
 
 namespace SlotMachine
 {
-    public class SlotMachineGame : IGame
+    public class Game : IGame
     {
         private readonly IPlayer player;
         private readonly ISpin spinner;
-        private readonly IUserInterfaceController userInterfaceController;
+        private readonly IUserInterface userInterface;
         private readonly IAmountValidator amountValidator;
 
-        public SlotMachineGame(
-            ISpin spinner, IUserInterfaceController userInterfaceController, IPlayer player, IAmountValidator amountValidator)
+        public Game(
+            ISpin spinner, IUserInterface userInterface, IPlayer player, IAmountValidator amountValidator)
         {
             this.player = player;
             this.spinner = spinner;
             this.amountValidator = amountValidator;
-            this.userInterfaceController = userInterfaceController;
+            this.userInterface = userInterface;
         }
 
         public void Play()
@@ -28,13 +28,13 @@ namespace SlotMachine
 
                 this.player.Deposit += winAmount;
 
-                this.userInterfaceController.DrawScreen(winAmount, this.player.Deposit);
+                this.userInterface.DrawScreen(winAmount, this.player.Deposit);
             }
         }
 
         private void MakeDeposit()
         {
-            decimal deposit = this.userInterfaceController.MakeDeposit();
+            decimal deposit = this.userInterface.MakeDeposit();
 
             this.amountValidator.ValidateDeposit(deposit);
             this.player.Deposit = deposit;
@@ -42,7 +42,7 @@ namespace SlotMachine
 
         private decimal PlaceBet()
         {
-            decimal bet = this.userInterfaceController.PlaceBet();
+            decimal bet = this.userInterface.PlaceBet();
 
             this.amountValidator.ValidateBet(this.player.Deposit, bet);
 

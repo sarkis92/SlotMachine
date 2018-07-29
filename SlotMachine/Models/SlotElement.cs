@@ -1,11 +1,18 @@
 ﻿namespace SlotMachine.Models
 {
-    public abstract class SlotElement
+    public class SlotElement
     {
-        public abstract char Mark { get; }
+        public char Symbol { get; }
 
-        public abstract double Coeficient { get; }
+        public double Coeficient { get; }
 
-        public abstract double Probability { get; }
+        public double Probability { get; }
+
+        public SlotElement(char symbol, double coeficient, double probability)
+        {
+            this.Symbol = symbol;
+            this.Coeficient = coeficient;
+            this.Probability = probability;
+        }
     }
 }

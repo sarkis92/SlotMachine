@@ -2,6 +2,6 @@
 {
     public interface IWinCalculator
     {
-        decimal Calculate(ISlotElementsMatrix slotElementsMatrix, decimal bet);
+        decimal Calculate(IElementsMatrix slotElementsMatrix, decimal bet);
     }
 }

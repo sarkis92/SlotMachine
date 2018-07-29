@@ -2,7 +2,7 @@
 
 namespace SlotMachine.Interfaces
 {
-    public interface ISlotElementsMatrix
+    public interface IElementsMatrix
     {
         SlotElement[,] Slots { get; }
         int Rows { get; }

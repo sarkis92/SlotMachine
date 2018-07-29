@@ -2,14 +2,14 @@
 
 namespace SlotMachine
 {
-    public class SlotMachineSpinner : ISpin
+    public class Spinner : ISpin
     {
-        private readonly ISlotElementsMatrix machineSlots;
+        private readonly IElementsMatrix machineSlots;
         private readonly IRandomElementPicker randomElementPicker;
         private readonly IWinCalculator winCalculator;
 
-        public SlotMachineSpinner(
-            ISlotElementsMatrix machineSlots,
+        public Spinner(
+            IElementsMatrix machineSlots,
             IRandomElementPicker randomElementPicker,
             IWinCalculator winCalculator)
         {

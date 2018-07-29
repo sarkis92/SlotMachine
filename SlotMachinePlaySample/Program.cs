@@ -1,7 +1,6 @@
 ﻿using SlotMachine;
 using SlotMachine.Interfaces;
 using SlotMachine.Models;
-using System;
 using System.Collections.Generic;
 
 namespace SlotMachinePlaySample
@@ -10,15 +9,21 @@ namespace SlotMachinePlaySample
     {
         static void Main(string[] args)
         {
-            var slotElements = new List<SlotElement> { new Banana(), new Apple(), new Pineapple(), new Wildcard() };
             var winningCombinations = new List<IWinningCombination>() { new HorizontalWinCombination() };
-            var slotMatrix = new SlotElementsMatrix();
-            var slotMachine = new SlotMachineGame(
-                new SlotMachineSpinner(
+            var slotMatrix = new ElementsMatrix(4, 3);
+            var slotMachine = new Game(
+                new Spinner(
                     slotMatrix,
-                    new RandomElementPicker(slotElements),
+                    new RandomElementPicker(
+                        new List<SlotElement>
+                        {
+                            new SlotElement('A', 0.4, 0.45),
+                            new SlotElement('B', 0.6, 0.35),
+                            new SlotElement('P', 0.8, 0.15),
+                            new SlotElement('*', 0, 0.05)
+                        }),
                     new WinCalculator(winningCombinations)),
-                new UserInterfaceMediator(new SlotMachineScreen(slotMatrix), new IODeviceManager()),
+                new UserInterface(slotMatrix),
                 new Player(), new AmountValidator());
 
             slotMachine.Play();

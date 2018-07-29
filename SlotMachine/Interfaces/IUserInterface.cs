@@ -2,7 +2,8 @@
 {
     public interface IUserInterface
     {
-        void DrawScreen(decimal winAmount, decimal balance);
-        void Message(string message);
+        decimal MakeDeposit();
+        decimal PlaceBet();
+        void DrawScreen(decimal winAmount, decimal deposit);
     }
 }
